@@ -15,7 +15,7 @@ class CreateCcrTable extends Migration
     {
         Schema::create('ccr', function (Blueprint $table) {
             $table->id();
-            $table->unsignedInteger('rjo_id')->unique();
+            $table->unsignedBigInteger('rjo_id')->unique();
             $table->string('file');
 
             $table->foreign('rjo_id')->references('id')->on('rjo')->onDelete('cascade')->onUpdate('cascade');

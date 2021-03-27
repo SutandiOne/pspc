@@ -15,8 +15,8 @@ class CreatePekerjaanSelesaiTable extends Migration
     {
         Schema::create('pekerjaan_selesai', function (Blueprint $table) {
             $table->id();
-            $table->unsignedInteger('ccr_id')->unique();
-            $table->unsignedInteger('ppc_id');
+            $table->unsignedBigInteger('ccr_id')->unique();
+            $table->unsignedBigInteger('ppc_id');
             $table->date('date_finish');
 
             $table->foreign('ccr_id')->references('id')->on('ccr')->onDelete('cascade')->onUpdate('cascade');

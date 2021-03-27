@@ -15,7 +15,7 @@ class CreateMarketingTable extends Migration
     {
         Schema::create('marketing', function (Blueprint $table) {
             $table->id();
-            $table->unsignedInteger('user_id')->unique();
+            $table->unsignedBigInteger('user_id')->unique();
             $table->string('nama');
             $table->date('tanggal_lahir');
             $table->string('no_hp');
@@ -23,6 +23,7 @@ class CreateMarketingTable extends Migration
             $table->enum('gender', ['L','P']);
 
             $table->timestamps();
+
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
         });
     }

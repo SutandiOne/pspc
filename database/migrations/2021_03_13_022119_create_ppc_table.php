@@ -15,7 +15,7 @@ class CreatePpcTable extends Migration
     {
         Schema::create('ppc', function (Blueprint $table) {
             $table->id();
-            $table->unsignedInteger('user_id')->unique();
+            $table->unsignedBigInteger('user_id')->unique();
             $table->string('nama');
             $table->date('tanggal_lahir');
             $table->string('no_hp');

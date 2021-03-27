@@ -15,9 +15,9 @@ class CreateSparePartTable extends Migration
     {
         Schema::create('spare_part', function (Blueprint $table) {
             $table->string('id')->primary();
-            $table->unsignedInteger('customer_id');
-            $table->unsignedInteger('marketing_id');
-            $table->unsignedInteger('ppc_id');
+            $table->unsignedBigInteger('customer_id');
+            $table->unsignedBigInteger('marketing_id');
+            $table->unsignedBigInteger('ppc_id');
             $table->integer('unit_code');
             $table->string('part_name');
             $table->string('problem');
@@ -27,6 +27,11 @@ class CreateSparePartTable extends Migration
             $table->date('date_request');
             $table->date('date_finish');
             $table->timestamps();
+
+            $table->foreign('ppc_id')->references('id')->on('ppc')->onUpdate('cascade');
+            $table->foreign('customer_id')->references('id')->on('customer')->onUpdate('cascade');
+            $table->foreign('marketing_id')->references('id')->on('marketing')->onUpdate('cascade');
+
         });
     }
 
