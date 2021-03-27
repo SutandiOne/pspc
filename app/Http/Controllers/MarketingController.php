@@ -13,7 +13,7 @@ class MarketingController extends Controller
         if (request()->ajax()) {
             
             //user
-            $marketing = Marketing::with('user');
+            $marketing = Marketing::with('user:id,username,email')->get();
 
             return datatables()->of($marketing)
                 ->editColumn('akun', function($data){
