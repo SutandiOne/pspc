@@ -1,0 +1,17 @@
+{{-- <script src="../assets/vendor/multi-select/js/jquery.multi-select.js"></script> --}}
+<script src="{{asset('assets/vendor/datatables/js/jquery.dataTables2021.min.js')}}"></script>
+<script src="{{asset('assets/vendor/datatables/js/dataTables.bootstrap4.min.js')}}"></script>
+<script src="{{asset('assets/vendor/datatables/js/dataTables.buttons.min.js')}}"></script>
+<script src="{{asset('assets/vendor/datatables/js/buttons.bootstrap4.min.js')}}"></script>
+{{-- <script src="../assets/vendor/datatables/js/data-table.js"></script> --}}
+<script src="{{asset('assets/vendor/datatables/js/jszip.min.js')}}"></script>
+<script src="{{asset('assets/vendor/datatables/js/pdfmake.min.js')}}"></script>
+<script src="{{asset('assets/vendor/datatables/js/vfs_fonts.js')}}"></script>
+<script src="{{asset('assets/vendor/datatables/js/buttons.html5.min.js')}}"></script>
+<script src="{{asset('assets/vendor/datatables/js/buttons.print.min.js')}}"></script>
+<script src="{{asset('assets/vendor/datatables/js/buttons.colVis.min.js')}}"></script>
+<script src="{{asset('assets/vendor/datatables/js/dataTables.rowGroup.min.js')}}"></script>
+<script src="{{asset('assets/vendor/datatables/js/dataTables.select.min.js')}}"></script>
+<script src="{{asset('assets/vendor/datatables/js/dataTables.fixedHeader.min.js')}}"></script>
+<script src="{{asset('assets/vendor/datatables/js/dataTables.responsive.min.js')}}"></script>
+<script src="{{asset('assets/vendor/datatables/js/responsive.bootstrap4.min.js')}}"></script>
