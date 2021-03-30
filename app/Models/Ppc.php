@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Models\User;
+use Illuminate\Support\Carbon;
 use App\Models\PekerjaanSelesai;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -14,6 +15,15 @@ class Ppc extends Model
     protected $table = 'ppc';
 
     protected $guarded = [];
+
+    public function getUmurAttribute()
+    {
+        return Carbon::parse($this->tanggal_lahir)->age;
+    }
+    public function getGenderAttribute($value)
+    {
+        return $value == 'L' ? 'Laki-laki' : 'Perempuan';
+    }
 
     public function user()
     {   

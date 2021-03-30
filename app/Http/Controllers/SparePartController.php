@@ -38,7 +38,7 @@ class SparePartController extends Controller
                
                 ->addColumn('aksi', function($data){
 
-                    $rDel = 'sparepart.destroy';
+                    $rDel = null;
                     $rEdit = null;
                     $rShow = 'sparepart.show';
                     $rFile = null;
@@ -141,10 +141,8 @@ class SparePartController extends Controller
      * @param  \App\Models\SparePart  $sparePart
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(SparePart $sparepart)
     {
-
-        $sparepart = SparePart::find($id);
         
         return view('app.sparepart.show', compact('sparepart'));
 
@@ -155,34 +153,66 @@ class SparePartController extends Controller
      * @param  \App\Models\SparePart  $sparePart
      * @return \Illuminate\Http\Response
      */
-    public function surat($id)
+    public function surat(SparePart $sparepart)
     {
-
-        $sparePart = SparePart::find($id);
 
         $surat_jalan = new \PhpOffice\PhpWord\TemplateProcessor(storage_path('app/public/surat/surat_jalan.docx'));
 
-        $date_received = Carbon::parse($sparePart->date_received)->isoFormat('Do MMMM YYYY');
-        $date_request = Carbon::parse($sparePart->date_request)->isoFormat('Do MMMM YYYY');
-        $date_finish = Carbon::parse($sparePart->date_finish)->isoFormat('Do MMMM YYYY');
+        $date_received = Carbon::parse($sparepart->date_received)->isoFormat('Do MMMM YYYY');
+        $date_request = Carbon::parse($sparepart->date_request)->isoFormat('Do MMMM YYYY');
+        $date_finish = Carbon::parse($sparepart->date_finish)->isoFormat('Do MMMM YYYY');
 
         $surat_jalan->setValues([
-            'sparepart_id' => $sparePart->id,
+            'sparepart_id' => $sparepart->id,
             'tanggal' => date('d-M-Y'),
-            'customer_name' => $sparePart->customer->nama,
-            'customer_address' => $sparePart->customer->address,
+            'customer_name' => $sparepart->customer->nama,
+            'customer_address' => $sparepart->customer->address,
             'date_received' => $date_received,
             'date_finish' => $date_finish,
-            'unit_code' => $sparePart->unit_code,
-            'part_name' => $sparePart->part_name,
-            'job_desc' => $sparePart->job_desc,
+            'unit_code' => $sparepart->unit_code,
+            'part_name' => $sparepart->part_name,
+            'job_desc' => $sparepart->job_desc,
         ]);
 
-        $name_surat = 'Surat Jalan no.'.$sparePart->id.'.docx';
+        $name_surat = 'Surat Jalan no.'.$sparepart->id.'.docx';
 
         $surat_jalan->saveAs($name_surat);
 
         return response()->download(public_path($name_surat))->deleteFileAfterSend(true);
+    }
+
+
+        /**
+     * Make surat for specified resource.
+     *
+     * @param  \App\Models\SparePart  $sparepart
+     * @return \Illuminate\Http\Response
+     */
+    public function perintah(SparePart $sparepart)
+    {
+        
+        $surat_perintah = new \PhpOffice\PhpWord\TemplateProcessor(storage_path('app/public/surat/ccr.docx'));
+
+        $date_received = Carbon::parse($sparepart->date_received)->isoFormat('dddd, Do MMMM YYYY');
+        $date_request = Carbon::parse($sparepart->date_request)->isoFormat('dddd, Do MMMM YYYY');
+
+        $surat_perintah->setValues([
+            'ccr_id' => $sparepart->ccr,
+            'tahun' => date('Y'),
+            'customer_name' => $sparepart->customer->nama,
+            'date_received' => $date_received,
+            'date_request' => $date_request,
+            'unit_model' => $sparepart->unit_code.'-'.$sparepart->part_name,
+            'job_desc' => $sparepart->job_desc,
+            
+        ]);
+
+        $name_surat = 'Surat Perintah Kerja CCR no.'.$sparepart->ccr.'.docx';
+
+        $surat_perintah->saveAs($name_surat);
+
+        return response()->download(public_path($name_surat))->deleteFileAfterSend(true);
+
     }
 
     /**
@@ -191,7 +221,7 @@ class SparePartController extends Controller
      * @param  \App\Models\SparePart  $sparePart
      * @return \Illuminate\Http\Response
      */
-    public function edit(SparePart $sparePart)
+    public function edit(SparePart $sparepart)
     {
         //
     }
@@ -203,7 +233,7 @@ class SparePartController extends Controller
      * @param  \App\Models\SparePart  $sparePart
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, SparePart $sparePart)
+    public function update(Request $request, SparePart $sparepart)
     {
         //
     }
@@ -214,11 +244,8 @@ class SparePartController extends Controller
      * @param  \App\Models\SparePart  $sparePart
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(SparePart $sparepart)
     {
-
-        $sparePart = SparePart::find($id);
-
 
         $exists = Storage::exists('public/berkas/ccr/'.$sparePart->ccr_file);
         if ($exists) {
@@ -228,5 +255,24 @@ class SparePartController extends Controller
         $sparePart->delete();
         
         return redirect()->back()->with('success', 'Data Sparepart berhasil dihapus');
+    }
+
+
+    /**
+     * Download file the specified resource.
+     *
+     * @param  \App\Models\SparePart  $sparepart
+     * @return \Illuminate\Http\Response
+     */
+    public function file(SparePart $sparepart)
+    {
+        try {
+    		  
+    		return response()->download(Storage_path('app/public/berkas/ccr/'.$sparepart->ccr_file));
+
+    	} catch (\Exception $e) {
+
+    		return abort('404');
+    	}
     }
 }

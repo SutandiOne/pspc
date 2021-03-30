@@ -10,160 +10,175 @@
     <div class="row">
         <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
             <div class="page-header">
-            <h2 class="pageheader-title">{{$sparepart->id}}</h2>            
+            <h2 class="pageheader-title">Data Sparepart {{$sparepart->id}}</h2>            
         </div>
     </div>
 </div>
 
 <div class="row">
-
-    <div class=" col-12">
-        <div class="card">
-            <div class="card-header pills-regular">
-                <ul class="nav nav-pills card-header-pills" id="myTab2" role="tablist">
-                    <li class="nav-item">
-                        <a class="nav-link active" id="card-pills-1" data-toggle="tab" href="#card-pill-1" role="tab" aria-controls="card-1" aria-selected="true">Detail</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" id="card-pills-2" data-toggle="tab" href="#card-pill-2" role="tab" aria-controls="card-2" aria-selected="false">Customer</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" id="card-pills-3" data-toggle="tab" href="#card-pill-3" role="tab" aria-controls="card-3" aria-selected="false">PPC</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" id="card-pills-4" data-toggle="tab" href="#card-pill-4" role="tab" aria-controls="card-4" aria-selected="false">Marketing</a>
-                    </li>
-                </ul>
+    <div class="col-md-4 col-12">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body bg-primary">
+                
+                        <div class="user-avatar float-xl-left pr-4 float-center">
+                            <img src="https://ui-avatars.com/api/?name={{$sparepart->customer->nama}}&background=fff&rounded=true" alt="User Avatar" class="rounded-circle user-avatar-xl">
+                        </div>
+                        <div class="pl-xl-3">
+                            <div class="m-b-0">
+                                <div class="user-avatar-name d-inline-block">
+                                    <h2 class="font-24 m-b-10 text-white">{{$sparepart->customer->nama}}</h2>
+                                </div> 
+                            </div>
+                            <div class="user-avatar-address">
+                                <p class="mb-2">
+                                    <span class="badge badge-light">Customer</span>
+                                </p>
+                                <p class="mb-2">
+                                    <i class="fas fa-phone mr-2  text-light"></i>{{$sparepart->customer->no_telepon}} &nbsp;
+                                           
+                                </p>
+                                <p class="mb-2"><i class="fa fa-map-marker-alt mr-2  text-light"></i>{{$sparepart->customer->address}} 
+                                </p> 
+                            </div>
+                        </div>
+                         
+                </div>
+                   
             </div>
+            {{-- end card --}}
+        </div>
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                  
+                        <div class="user-avatar float-xl-left pr-4 float-none">
+                            <img src="https://ui-avatars.com/api/?name={{$sparepart->marketing->nama}}&background=random&rounded=true" alt="User Avatar" class="rounded-circle user-avatar-xl">
+                        </div>
+                        <div class="pl-xl-3">
+                            <div class="m-b-0">
+                                <div class="user-avatar-name d-inline-block">
+                                    <h2 class="font-24 m-b-10">{{$sparepart->marketing->nama}}</h2>
+                                </div> 
+                            </div>
+                            <div class="user-avatar-address">
+                                <p class="mb-2">
+                                    <span class="badge badge-light">Staff Marketing</span><span class="m-l-10">{{$sparepart->marketing->gender}}<span class="m-l-15">{{$sparepart->marketing->umur}} Tahun</span></span>
+                                </p>
+                                <p class="mb-2">
+                                    <i class="fas fa-phone mr-2  text-primary"></i>{{$sparepart->marketing->no_hp}} &nbsp;
+                                    <i class="fas fa-envelope-open mr-2  text-primary"></i>{{$sparepart->marketing->user->email}}           
+                                </p>
+                                <p class="mb-2"><i class="fa fa-map-marker-alt mr-2  text-primary"></i>{{$sparepart->marketing->alamat}} 
+                                </p> 
+                            </div>
+                        </div>
+                         
+                </div>
+                   
+            </div>
+            {{-- end card --}}
+        </div>
+        
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                  
+                        <div class="user-avatar float-xl-left pr-4 float-none">
+                            <img src="https://ui-avatars.com/api/?name={{$sparepart->ppc->nama}}&background=random&rounded=true" alt="User Avatar" class="rounded-circle user-avatar-xl">
+                        </div>
+                        <div class="pl-xl-3">
+                            <div class="m-b-0">
+                                <div class="user-avatar-name d-inline-block">
+                                    <h2 class="font-24 m-b-10">{{$sparepart->ppc->nama}}</h2>
+                                </div> 
+                            </div>
+                            <div class="user-avatar-address">
+                                <p class="mb-2">
+                                    <span class="badge badge-light">Staff PPC</span><span class="m-l-10">{{$sparepart->ppc->gender}}<span class="m-l-15">{{$sparepart->ppc->umur}} Tahun</span></span>
+                                </p>
+                                <p class="mb-2">
+                                    <i class="fas fa-phone mr-2  text-primary"></i>{{$sparepart->ppc->no_hp}} &nbsp;
+                                    <i class="fas fa-envelope-open mr-2  text-primary"></i>{{$sparepart->ppc->user->email}}           
+                                </p>
+                                <p class="mb-2"><i class="fa fa-map-marker-alt mr-2  text-primary"></i>{{$sparepart->ppc->alamat}} 
+                                </p> 
+                            </div>
+                        </div>
+                         
+                </div>
+                   
+            </div>
+            {{-- end card --}}
+        </div>
+    </div>
+    <div class=" col-md-8 col-12">
+        <div class="card">
             <div class="card-body">
-                <div class="tab-content" id="myTabContent2">
-                    <div class="tab-pane fade show active" id="card-pill-1" role="tabpanel" aria-labelledby="card-tab-1">
-                        <div class="form-group row">
-                            <label for="d-ccrid" class="col-3 col-lg-2 col-form-label text-right">CCR No.</label>
-                            <div class="col-9 col-lg-10">
-                                <input id="d-ccrid" type="text" class="form-control" readonly>
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="d-daterequest" class="col-3 col-lg-2 col-form-label text-right">Date Request</label>
-                            <div class="col-9 col-lg-10">
-                                <input id="d-daterequest" type="text" class="form-control" readonly>
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="d-datereceived" class="col-3 col-lg-2 col-form-label text-right">Date Received</label>
-                            <div class="col-9 col-lg-10">
-                                <input id="d-datereceived" type="text" class="form-control" readonly>
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="d-datefinish" class="col-3 col-lg-2 col-form-label text-right">Date Finish</label>
-                            <div class="col-9 col-lg-10">
-                                <input id="d-datefinish" type="text" class="form-control" readonly>
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="d-unitcode" class="col-3 col-lg-2 col-form-label text-right">Unit Code</label>
-                            <div class="col-9 col-lg-10">
-                                <input id="d-unitcode" type="text" class="form-control" readonly>
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="d-partname" class="col-3 col-lg-2 col-form-label text-right">Part Name</label>
-                            <div class="col-9 col-lg-10">
-                                <input id="d-partname" type="text" class="form-control" readonly>
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="d-problem" class="col-3 col-lg-2 col-form-label text-right">Problem</label>
-                            <div class="col-9 col-lg-10">
-                                <textarea id="d-problem" class="form-control" rows="3" readonly></textarea>
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="d-jobdesc" class="col-3 col-lg-2 col-form-label text-right">Job Desc.</label>
-                            <div class="col-9 col-lg-10">
-                                <textarea id="d-jobdesc" class="form-control" rows="4" readonly></textarea>
-                            </div>
-                        </div>
+                <div class="row">
+                    <div class="col-md-3 col-12 text-center">
+                        <div class="icon-box-lg icon-circle-medium bg-primary mb-2" >
+                            <i class="fas fa-ticket-alt fa-fw fa-sm"></i>
+                        </div> 
+                        <h4>Repair Job Order </h4>
+                        <span class="badge badge-light">Kode No : {{$sparepart->rjo}}</span>
                     </div>
-                    <div class="tab-pane fade" id="card-pill-2" role="tabpanel" aria-labelledby="card-tab-2">
-                        <div class="form-group row">
-                            <label for="c-nama" class="col-3 col-lg-2 col-form-label text-right">Nama</label>
-                            <div class="col-9 col-lg-10">
-                                <input id="c-nama" type="text" class="form-control" readonly>
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="c-notelp" class="col-3 col-lg-2 col-form-label text-right">No. Telepon</label>
-                            <div class="col-9 col-lg-10">
-                                <input id="c-notelp" type="text" class="form-control" readonly>
-                            </div>
-                        </div>
-                        
-                        <div class="form-group row">
-                            <label for="c-address" class="col-3 col-lg-2 col-form-label text-right">Address</label>
-                            <div class="col-9 col-lg-10">
-                                <textarea id="c-address" class="form-control" rows="3" readonly></textarea>
-                            </div>
-                        </div>
+                    <div class="col-md-3 col-12">
+                        <ul class="list-group list-group-flush text-dark">
+                            <li class="list-group-item">Unit Kode : {{$sparepart->unit_code}}</li>
+                            <li class="list-group-item">Part Name : {{$sparepart->part_name}}</li>
+                            <li class="list-group-item">Date Received : {{$sparepart->date_received}}</li>
+                            <li class="list-group-item">Date Request  : {{$sparepart->date_request}}</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6 col-12">
+                        <ul class="list-unstyled mt-2">
+                            <li class="media"> 
+                                <div class="media-body">
+                                    <h5 class="mt-0 mb-1">{{$sparepart->problem}}</h5> {{$sparepart->job_desc}}
+                                </div>
+                            </li>
+                           
+                        </ul>
                     </div>
                    
-                    <div class="tab-pane fade" id="card-pill-3" role="tabpanel" aria-labelledby="card-tab-3">
-                        <div class="form-group row">
-                            <label for="p-nama" class="col-3 col-lg-2 col-form-label text-right">Nama</label>
-                            <div class="col-9 col-lg-10">
-                                <input id="p-nama" type="text" class="form-control" readonly>
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="p-email" class="col-3 col-lg-2 col-form-label text-right">Email</label>
-                            <div class="col-9 col-lg-10">
-                                <input id="p-email" type="email" class="form-control" readonly>
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="p-nohp" class="col-3 col-lg-2 col-form-label text-right">No. Handphone</label>
-                            <div class="col-9 col-lg-10">
-                                <input id="p-nohp" type="text" class="form-control" readonly>
-                            </div>
-                        </div>
-                        
-                        <div class="form-group row">
-                            <label for="p-alamat" class="col-3 col-lg-2 col-form-label text-right">Alamat</label>
-                            <div class="col-9 col-lg-10">
-                                <textarea id="p-alamat" class="form-control" rows="3" readonly></textarea>
-                            </div>
-                        </div>
+                </div>
+                
+                <hr>
+
+                <div class="row">
+                    <div class="col-md-3 col-12 text-center">
+                        <div class="icon-box-lg icon-circle-medium bg-primary mb-2" >
+                            <i class="fas fa-clipboard-list fa-fw fa-sm"></i>
+                        </div> 
+                        <h4>Component Condition Report</h4>
+                        <span class="badge badge-light">Kode No : {{$sparepart->rjo}}</span>
+
                     </div>
-                    <div class="tab-pane fade" id="card-pill-4" role="tabpanel" aria-labelledby="card-tab-4">
-                        <div class="form-group row">
-                            <label for="m-nama" class="col-3 col-lg-2 col-form-label text-right">Nama</label>
-                            <div class="col-9 col-lg-10">
-                                <input id="m-nama" type="text" class="form-control" readonly>
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="m-email" class="col-3 col-lg-2 col-form-label text-right">Email</label>
-                            <div class="col-9 col-lg-10">
-                                <input id="m-email" type="email" class="form-control" readonly>
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="m-nohp" class="col-3 col-lg-2 col-form-label text-right">No. Handphone</label>
-                            <div class="col-9 col-lg-10">
-                                <input id="m-nohp" type="text" class="form-control" readonly>
-                            </div>
-                        </div>
-                        
-                        <div class="form-group row">
-                            <label for="m-alamat" class="col-3 col-lg-2 col-form-label text-right">Alamat</label>
-                            <div class="col-9 col-lg-10">
-                                <textarea id="m-alamat" class="form-control" rows="3" readonly></textarea>
-                            </div>
-                        </div>
+                    <div class="col-md-9 col-12">
+                        <ul class="list-group list-group-flush text-dark">
+                            <li class="list-group-item">CCR File : <a class="text-secondary" href="{{route('sparepart.file', $sparepart->id)}}"><i class="fas fa-file"></i> {{$sparepart->ccr_file}}</a></li>
+                            <li class="list-group-item">Surat Perintah Kerja : <a class="text-secondary" href="{{route('sparepart.perintah', $sparepart->id)}}"><i class="fas fa-file"></i> ccr_no.{{$sparepart->ccr}}.docx</a></li>
+                        </ul>
                     </div>
                 </div>
+                <hr>
+                <div class="row">
+                    <div class="col-md-3 col-12 text-center">
+                        <div class="icon-box-lg icon-circle-medium bg-primary mb-2" >
+                            <i class="fas fa-tasks fa-fw fa-sm"></i>
+                        </div> 
+                        <h4>Pekerjaan Selesai</h4>
+                        <hr>
+                    </div>
+                    <div class="col-md-9 col-12">
+                        <ul class="list-group list-group-flush text-dark">
+                            <li class="list-group-item">Date Finish : {{$sparepart->date_finish}}</li>
+                            <li class="list-group-item">Surat Jalan : <a class="text-secondary" href="{{route('sparepart.surat', $sparepart->id)}}"><i class="fas fa-file"></i> sparepart_id.{{$sparepart->id}}.docx</a></li>
+                        </ul>
+                    </div>
+                </div>
+       
             </div>
         </div>
     </div>

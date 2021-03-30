@@ -1,6 +1,9 @@
 
 @extends('layout.dash')
 
+@section('head')
+<livewire:styles />
+@endsection
 
 @section('content')
 
@@ -17,5 +20,15 @@
         <h3 class="text-center"></h3>
     </div>
 </div>
+
+@endsection
+
+@section('script')
+
+<livewire:scripts />
+
+<script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js"></script>
+
+@livewireChartsScripts
 
 @endsection

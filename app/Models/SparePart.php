@@ -20,6 +20,17 @@ class SparePart extends Model
     protected $keyType = 'string';
 
 
+    public function getRjoAttribute()
+    {   
+        $id = explode('-', $this->id);
+        return $id[0];
+    }
+    public function getCcrAttribute()
+    {   
+        $id = explode('-', $this->id);
+        return $id[1];
+    }
+
 
     public function customer()
     {   

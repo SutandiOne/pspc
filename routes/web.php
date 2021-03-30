@@ -78,7 +78,11 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/select/selesai', [PekerjaanSelesaiController::class, 'select'])
         ->name('selesai.select');
         
-        Route::get('/sparepart/surat/{id}', [SparePartController::class, 'surat'])
+        Route::get('/sparepart/file/{sparepart}', [SparePartController::class, 'file'])
+        ->name('sparepart.file');
+        Route::get('/sparepart/perintah/{sparepart}', [SparePartController::class, 'perintah'])
+        ->name('sparepart.perintah');
+        Route::get('/sparepart/surat/{sparepart}', [SparePartController::class, 'surat'])
         ->name('sparepart.surat');
         Route::get('/sparepart/list', [SparePartController::class, 'list'])
         ->name('sparepart.list');
@@ -98,11 +102,6 @@ Route::middleware(['auth'])->group(function () {
         Route::resource('rjo', RjoController::class);
 
     });
-
-    
-
-
-
 
 
 });

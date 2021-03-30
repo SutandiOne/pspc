@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
 use App\Models\Rjo;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Model;
@@ -15,6 +16,16 @@ class Marketing extends Model
 
 
     protected $guarded = [];
+
+
+    public function getUmurAttribute()
+    {
+        return Carbon::parse($this->tanggal_lahir)->age;
+    }
+    public function getGenderAttribute($value)
+    {
+        return $value == 'L' ? 'Laki-laki' : 'Perempuan';
+    }
 
     // one
     public function user()
@@ -31,5 +42,10 @@ class Marketing extends Model
     {
         return $this->hasMany(SparePart::class);
     }
+
+
+    
+
+
 
 }
