@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Ccr;
+use App\Models\Ppc;
 use App\Models\Rjo;
 use App\Models\Customer;
+use App\Models\Marketing;
 use App\Models\SparePart;
 use Illuminate\Http\Request;
 use App\Models\PekerjaanSelesai;
@@ -56,7 +58,20 @@ class DashController extends Controller
     }
     public function manager()
     {
-        return view('dashboard.manager');
+
+        $total_customer = Customer::count();
+        $total_marketing = Marketing::count();
+        $total_ppc = Ppc::count();
+        $total_staff = $total_marketing + $total_ppc;
+
+
+        $rjo = Rjo::doesntHave('ccr')->latest()->get()->take(4);
+        $ccr = Ccr::doesntHave('pekerjaan_selesai')->latest()->get()->take(4);
+        $selesai = PekerjaanSelesai::latest()->get()->take(4);
+        $kirim = SparePart::latest()->get()->take(4);
+
+
+        return view('dashboard.manager', compact('total_customer','total_staff','rjo','ccr','selesai','kirim'));
     }
 
 }

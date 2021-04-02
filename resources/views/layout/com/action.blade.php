@@ -3,7 +3,7 @@
 @endif
 
 @if ($rDel)
-<form class="form-{{$data->id}}" method="POST" action="{{ route($rDel, $data->id) }}" onsubmit="return confirm('Anda yakin ingin menghapus data ini?')">
+<form class="form-{{$data->id}}" method="POST" action="{{ route($rDel, $data->id) }}" onsubmit="return confirm('Apakah anda yakin ingin menghapus data ini?')">
     @method('DELETE')
     @csrf
 

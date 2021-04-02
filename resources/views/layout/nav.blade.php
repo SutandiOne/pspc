@@ -109,6 +109,22 @@
             Dashboard
         </a>
     </li>
+    <li class="nav-divider">
+        Statistik
+    </li>
+
+    <li class="nav-item">
+        <a href="{{route('statistik.staff')}}" class="nav-link font-weight-bold {{ (request()->is('statistik/staff')) ? 'active' : '' }}">
+            <i class="nav-icon fas  fas fa-chart-bar"></i>
+            Statistik Staff
+        </a>
+    </li>
+    <li class="nav-item">
+        <a href="{{route('statistik.customer')}}" class="nav-link font-weight-bold {{ (request()->is('statistik/customer')) ? 'active' : '' }}">
+            <i class="nav-icon fas  fas fa-chart-bar"></i>
+            Statistik Customer
+        </a>
+    </li>
 
 
     

@@ -9,6 +9,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\MarketingController;
 use App\Http\Controllers\SparePartController;
+use App\Http\Controllers\StatistikController;
 use App\Http\Controllers\PekerjaanSelesaiController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 
@@ -101,6 +102,13 @@ Route::middleware(['auth'])->group(function () {
         
         Route::resource('rjo', RjoController::class);
 
+    });
+
+    Route::middleware(['role:manager'])->group(function () {
+        Route::get('/statistik/staff', [StatistikController::class, 'staff'])
+        ->name('statistik.staff');
+        Route::get('/statistik/customer', [StatistikController::class, 'customer'])
+        ->name('statistik.customer');
     });
 
 

@@ -14,7 +14,7 @@ class CreateCcrTable extends Migration
     public function up()
     {
         Schema::create('ccr', function (Blueprint $table) {
-            $table->id();
+            $table->id()->from(20000);
             $table->unsignedBigInteger('rjo_id')->unique();
             $table->string('file');
 

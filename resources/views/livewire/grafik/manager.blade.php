@@ -1,3 +1,6 @@
-<div>
-    {{-- Nothing in the world is as soft and yielding as water. --}}
+<div style="height: 32rem;">
+    <livewire:livewire-pie-chart
+        :pie-chart-model="$chartStatus"
+    />
 </div>
+   

@@ -3,9 +3,10 @@
 namespace App\Models;
 
 use App\Models\Ccr;
+use App\Models\Ppc;
+use Illuminate\Support\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use App\Models\Ppc;
 
 class PekerjaanSelesai extends Model
 {
@@ -14,6 +15,13 @@ class PekerjaanSelesai extends Model
     protected $table = 'pekerjaan_selesai';
 
     protected $guarded = [];
+
+
+    public function getDateFinishsAttribute(){
+        $date_finish = Carbon::parse($this->date_finish)->isoFormat('dddd, Do MMMM YYYY');
+        return $date_finish;
+    }
+
 
     public function ccr()
     {

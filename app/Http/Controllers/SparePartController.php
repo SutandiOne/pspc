@@ -247,6 +247,7 @@ class SparePartController extends Controller
     public function destroy(SparePart $sparepart)
     {
 
+        // dd($sparepart->id);
         $exists = Storage::exists('public/berkas/ccr/'.$sparePart->ccr_file);
         if ($exists) {
             Storage::delete('public/berkas/ccr/'.$sparePart->ccr_file);
@@ -254,7 +255,7 @@ class SparePartController extends Controller
 
         $sparePart->delete();
         
-        return redirect()->back()->with('success', 'Data Sparepart berhasil dihapus');
+        return redirect()->route('sparepart.index')->with('success', 'Data Sparepart berhasil dihapus');
     }
 
 

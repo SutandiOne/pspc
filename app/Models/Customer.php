@@ -27,5 +27,10 @@ class Customer extends Model
         return $this->hasMany(SparePart::class);
     }
 
+    public function getSparepartCountAttribute()
+    {   
+        return $this->sparepart->count();
+    }
+
 
 }

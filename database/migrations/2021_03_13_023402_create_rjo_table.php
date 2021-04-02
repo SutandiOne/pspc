@@ -14,7 +14,7 @@ class CreateRjoTable extends Migration
     public function up()
     {
         Schema::create('rjo', function (Blueprint $table) {
-            $table->id();
+            $table->id()->from(10000);
             $table->unsignedBigInteger('customer_id');
             $table->unsignedBigInteger('marketing_id');
             $table->string('unit_code');

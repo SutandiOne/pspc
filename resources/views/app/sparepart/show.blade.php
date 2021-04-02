@@ -178,13 +178,49 @@
                         </ul>
                     </div>
                 </div>
+
+                <div class="row">
+                    <div class="col-md-9 col-12">
+                       
+                    </div>
+                    <div class="col-md-3 col-12 text-center">
+                        <h4>Konfirmasi Hapus Data</h4>
+                        <a class="icon-box-lg text-white icon-circle-medium bg-danger mb-2" data-toggle="modal" data-target="#confirmDelete" >
+                            <i class="fas fa-trash fa-fw fa-sm"></i>
+                        </a> 
+                        <hr>
+                    </div>
+                </div>
        
             </div>
+        </div> 
+    </div>  
+</div>
+
+
+<div class="modal fade" id="confirmDelete" tabindex="-1" role="dialog" aria-labelledby="confirmDeleteTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+          <form action="{{ route('sparepart.destroy', $sparepart->id) }}" method="POST">
+            @method('DELETE')
+            @csrf
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLongTitle">Konfirmasi Hapus Data Sparepart #{{$sparepart->id}}</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    Apakah anda ingin menghapus data ini dari database?, <span class="text-danger"> data yang sudah dihapus tidak dapat dikembalikan lagi!</span>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">❌ Batal</button>
+                    <button type="submit" class="btn btn-primary">✔ Setuju</button>
+                </div>
+            </form>
         </div>
     </div>
-    
-   
-    
-</div>
+  </div>
 @endsection
 
