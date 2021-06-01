@@ -72,7 +72,7 @@ class MarketingController extends Controller
         $marketing = new Marketing();
         $marketing->user = new User();
 
-        return $this->form('Tambah Staff PPC ', $action, $method, $marketing);
+        return $this->form('Tambah Staff Marketing ', $action, $method, $marketing);
     }
 
     /**
@@ -146,14 +146,14 @@ class MarketingController extends Controller
             
             $dataUser = request()->validate([
                 'username' => 'required|string|max:100',
-                'email' => 'required|email|unique:users,email,'.$ppc->user->id
+                'email' => 'required|email|unique:users,email,'.$marketing->user->id
             ]);
 
         }else{
 
             $dataUser = request()->validate([
                 'username' => 'required|string|max:100',
-                'email' => 'required|email|unique:users,email,'.$ppc->user->id,
+                'email' => 'required|email|unique:users,email,'.$marketing->user->id,
                 'password' => 'required|min:6',
                 'confirm-password' => 'required|same:password|min:6'
             ]);
